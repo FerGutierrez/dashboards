@@ -8,7 +8,7 @@ export class ConfigService {
   constructor(private _http: HttpClient) { }
 
   fetch(): Observable<any> {
-    return this._http.get('/assets/configs/main.json');
+    return this._http.get('/assets/configs/main.json').delay(2000);
   }
 
 }

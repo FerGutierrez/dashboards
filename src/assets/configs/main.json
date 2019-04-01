@@ -1,0 +1,33 @@
+{
+    "availableChartTypes": [
+        "line",
+        "area",
+        "bar",
+        "column",
+        "pie",
+        "scatter"
+    ],
+    "defaultChart": {    
+        "credits": {
+            "enabled": false
+        }
+    },
+    "dashboards": [
+        {
+            "id": 0,
+            "name": "First",
+            "charts": [
+                {
+                    "id": 0,
+                    "name": "First chart",
+                    "series": [
+                        {
+                            "name": "First series",
+                            "data": [1, 2, 3]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
