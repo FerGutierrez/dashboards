@@ -6,6 +6,6 @@ export interface IDashboardState {
 }
 
 export const initialDashboardState: IDashboardState = {
-    dashboards: null,
+    dashboards: [],
     creatingDashboard: false
 };

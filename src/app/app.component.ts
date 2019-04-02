@@ -23,10 +23,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(new GetConfig());
-
-    this.config$.do(config => console.log(config)).switchMap((config) => {
-      const payload = config.dashboards || [];
-      return Observable.of(new GetDashboards(payload));
-    });
+    
+    this.store.select(selectConfig)
+      .subscribe((config) => {
+        const payload = config && config.dashboards ? config.dashboards : [];
+        this.store.dispatch(new GetDashboards(payload));
+      });
   }
 }
