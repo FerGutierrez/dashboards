@@ -3,3 +3,12 @@
 <ul>
   <li *ngFor="let dashboard of dashboards$ | async" (click)="goToDashboard(dashboard.id)">{{ dashboard.name }}</li>
 </ul>
+
+<div *ngIf="! (creatingDashboard$ | async)">
+  <button (click)="editNewDashboard()">Add</button>
+</div>
+
+<div *ngIf="creatingDashboard$ | async">
+  <input #newDashboard type="text">
+  <button (click)="createDashboard(newDashboard.value)">Submit</button>
+</div>

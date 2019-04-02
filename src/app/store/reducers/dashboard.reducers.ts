@@ -30,7 +30,8 @@ export function dashboardReducers(
 
             return {
                 ...state,
-                dashboards: [ ...state.dashboards, newDashboard ]
+                dashboards: [ ...state.dashboards, newDashboard ],
+                creatingDashboard: false
             };
         }
 

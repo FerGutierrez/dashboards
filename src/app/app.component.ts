@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(new GetConfig());
-    
+
     this.store.select(selectConfig)
       .subscribe((config) => {
         const payload = config && config.dashboards ? config.dashboards : [];
@@ -30,6 +30,10 @@ export class AppComponent implements OnInit {
       });
 
     this.store.select(selectConfigError)
-      .subscribe(() => this.router.navigate(['error']));
+      .subscribe((error) => {
+        if (error) {
+          this.router.navigate(['error']);
+        }
+      });
   }
 }

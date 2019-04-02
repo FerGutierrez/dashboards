@@ -10,6 +10,11 @@ export const selectDashboardList = createSelector(
     (state: IDashboardState) => state.dashboards
 );
 
+export const selectCreatingDashboard = createSelector(
+    selectDashboards,
+    (state: IDashboardState) => state.creatingDashboard
+);
+
 /*
 export const selectDashboard = createSelector(
     selectDashboards,
