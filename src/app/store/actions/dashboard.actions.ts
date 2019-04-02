@@ -26,7 +26,7 @@ export class CreateDashboard implements Action {
 
 export class AddChart implements Action {
     readonly type = DASHBOARD_ACTIONS.ADD_CHART;
-    constructor (public payload: IChart) {}
+    constructor (public payload: {chart: IChart, dashboardId: number}) {}
 }
 
 export type DashboardAction

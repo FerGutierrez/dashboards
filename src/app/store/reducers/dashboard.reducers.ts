@@ -38,12 +38,14 @@ export function dashboardReducers(
         case DASHBOARD_ACTIONS.ADD_CHART: {
             const dashboards = state.dashboards;
             const selectedDashboard = dashboards.find((dashboard) => dashboard.id === action.payload.dashboardId);
+            const chart = action.payload.chart;
 
             if (!selectedDashboard) {
                 return state;
             }
 
-            selectedDashboard.charts.push(action.payload.chart);
+            chart.id = dashboards.length;
+            selectedDashboard.charts.push(chart);
 
             return {
                 ...state,

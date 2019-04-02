@@ -1,5 +1,30 @@
-<h3>Dashboard: {{ dashboardId }}</h3>
+<form [formGroup]="chartForm" (ngSubmit)="createChart()">
+    <h4>Name:</h4>
+    <input type="text" formControlName="name" required>
 
-<select name="type">
-  <option *ngFor="let type of chartTypes$ | async" value="type">{{ type }}</option>
-</select>
+    <h4>Type:</h4>
+    <select formControlName="type">
+      <option
+        *ngFor="let type of chartTypes$ | async"
+        [value]="type"
+      >{{ type }}</option>
+    </select>
+
+    <div formArrayName="series">
+      <h4>Series <button type="button" (click)="addSeries()">Add Series</button></h4>
+  
+      <div *ngFor="let series of series.controls; let i=index" [formGroupName]="i">
+        <label>
+          Name:
+          <input type="text" formControlName="name">
+        </label>
+    
+        <label>
+          Data:
+          <input type="text" formControlName="data">
+        </label>
+      </div>
+    </div>
+    <br>
+    <button type="submit" [disabled]="!chartForm.valid">Create</button>
+  </form>  
