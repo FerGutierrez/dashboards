@@ -1,3 +1,5 @@
-<p>
-  dashboard-list works!
-</p>
+<p>{{ dashboards$ | async | json }}</p>
+
+<ul>
+  <li *ngFor="let dashboard of dashboards$ | async" (click)="goToDashboard(dashboard.id)">{{ dashboard.name }}</li>
+</ul>

@@ -1,7 +1,2 @@
-<p *ngIf="loading$ | async">Loading...</p>
-<p *ngIf="error$ | async">Something went wrong. Please, try again later</p>
-<p *ngIf="config$ | async">{{ config$ | async | json }}</p>
-
-<p>{{ dashboards$ | async | json }}</p>
-
-<router-outlet></router-outlet>
+<h1 *ngIf="loading$ | async" style="text-align: center;">Loading...</h1>
+<router-outlet *ngIf="!(loading$ | async)"></router-outlet>

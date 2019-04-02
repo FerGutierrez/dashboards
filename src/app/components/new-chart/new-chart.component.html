@@ -1,3 +1,5 @@
-<p>
-  new-chart works!
-</p>
+<h3>Dashboard: {{ dashboardId }}</h3>
+
+<select name="type">
+  <option *ngFor="let type of chartTypes$ | async" value="type">{{ type }}</option>
+</select>

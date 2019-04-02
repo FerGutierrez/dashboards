@@ -18,3 +18,8 @@ export const selectConfigError = createSelector(
     configState,
     (state: IConfigState) => state.error
 );
+
+export const selectChartTypes = createSelector(
+    configState,
+    (state: IConfigState) => state.config.availableChartTypes
+);

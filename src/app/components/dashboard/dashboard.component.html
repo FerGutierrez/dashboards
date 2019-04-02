@@ -1,3 +1,5 @@
-<p>
-  dashboard works!
+<p *ngIf="dashboard">
+  {{ dashboard | json }}
 </p>
+
+<button (click)="addChart()">Add Chart</button>
