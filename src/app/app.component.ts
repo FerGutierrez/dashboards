@@ -30,6 +30,6 @@ export class AppComponent implements OnInit {
       });
 
     this.store.select(selectConfigError)
-      .subscribe((error) => console.log(error)); // this.router.navigate(['error']));
+      .subscribe(() => this.router.navigate(['error']));
   }
 }

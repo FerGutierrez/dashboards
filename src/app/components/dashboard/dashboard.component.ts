@@ -12,7 +12,6 @@ import { IDashboard } from '../../models/dashboard.interface';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  dashboardId: number;
   dashboard: IDashboard;
 
   constructor(
@@ -22,15 +21,15 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.dashboardId = Number(this.route.snapshot.paramMap.get('dashboardId'));
+    const dashboardId = Number(this.route.snapshot.paramMap.get('dashboardId'));
     this.store.select(selectDashboardList)
       .subscribe((dashboards) => {
-        this.dashboard = dashboards.find((item) => item.id === this.dashboardId);
+        this.dashboard = dashboards.find((item) => item.id === dashboardId);
       });
   }
 
   addChart() {
-    this.router.navigate([`dashboards/${this.dashboardId}/new-chart`]);
+    this.router.navigate(['new-chart'], { relativeTo: this.route });
   }
 
 }
