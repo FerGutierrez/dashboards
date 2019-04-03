@@ -1,14 +1,16 @@
 <p>{{ dashboards$ | async | json }}</p>
 
-<ul>
+<h2>Dashboards</h2>
+
+<ul class="dashboard-list">
   <li *ngFor="let dashboard of dashboards$ | async" (click)="goToDashboard(dashboard.id)">{{ dashboard.name }}</li>
 </ul>
 
 <div *ngIf="! (creatingDashboard$ | async)">
-  <button (click)="editNewDashboard()">Add</button>
+  <button class="btn btn-primary" (click)="editNewDashboard()">Add Dashboard</button>
 </div>
 
-<div *ngIf="creatingDashboard$ | async">
-  <input #newDashboard type="text">
-  <button (click)="createDashboard(newDashboard.value)">Submit</button>
+<div *ngIf="creatingDashboard$ | async" class="form-inline">
+  <input #newDashboard type="text" class="form-control" placeholder="Name">
+  <button class="btn btn-primary" (click)="createDashboard(newDashboard.value)"><span class="glyphicon glyphicon-ok"></span></button>
 </div>

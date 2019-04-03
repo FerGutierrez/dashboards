@@ -1,5 +1,12 @@
+<h2>{{ dashboard.name }}</h2>
+
+<button class="btn btn-default" (click)="goToDashboardList()">
+  <span class="glyphicon glyphicon-backward"></span>
+  Dashboards
+</button>
+<button class="btn btn-primary" (click)="addChart()">Add Chart</button>
+
 <p *ngIf="dashboard">
   {{ dashboard | json }}
 </p>
 
-<button (click)="addChart()">Add Chart</button>

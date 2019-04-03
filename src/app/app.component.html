@@ -1,2 +1,4 @@
-<h1 *ngIf="loading$ | async" style="text-align: center;">Loading...</h1>
-<router-outlet *ngIf="!(loading$ | async)"></router-outlet>
+<div class="container">
+    <h1 *ngIf="loading$ | async" class="text-center">Loading...</h1>
+    <router-outlet *ngIf="!(loading$ | async)"></router-outlet>
+</div>

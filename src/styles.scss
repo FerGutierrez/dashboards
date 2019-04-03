@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import 'assets/scss/index';
+@import '../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables';
+
+h2 {
+    color: $main-color;
+    border-bottom: 1px solid $main-color;
+}
+
+.container {
+    max-width: 960px;
+}

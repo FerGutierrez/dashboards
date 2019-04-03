@@ -32,4 +32,8 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['new-chart'], { relativeTo: this.route });
   }
 
+  goToDashboardList() {
+    this.router.navigate(['dashboards']);
+  }
+
 }
