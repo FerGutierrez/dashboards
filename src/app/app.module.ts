@@ -7,6 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { appReducers } from './store/reducers/app.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { ConfigEffects } from './store/effects/config.effects';
+import { ChartModule } from 'angular-highcharts';
 
 import { AppComponent } from './app.component';
 import { ConfigService } from './services/config.service';
@@ -32,7 +33,8 @@ import { ErrorComponent } from './components/error/error.component';
     ReactiveFormsModule,
     AppRoutingModule,
     StoreModule.forRoot(appReducers),
-    EffectsModule.forRoot([ConfigEffects])
+    EffectsModule.forRoot([ConfigEffects]),
+    ChartModule
   ],
   providers: [ConfigService],
   bootstrap: [AppComponent]
