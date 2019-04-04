@@ -22,6 +22,7 @@ export class NewChartComponent implements OnInit {
   chartForm = this.fb.group({
     name: ['', Validators.required],
     type: ['line'],
+    colspan: [''],
     series: this.fb.array([
       this.fb.group({
         name: ['', Validators.required],
@@ -57,6 +58,7 @@ export class NewChartComponent implements OnInit {
     const newChart: IChart = {
       name: this.chartForm.value.name,
       series: this.chartForm.value.series.map(this.mapSeries),
+      colspan: this.chartForm.value.colspan || 4,
       options: {
         chart: {
           type: this.chartForm.value.type

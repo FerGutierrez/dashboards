@@ -21,6 +21,7 @@
                 {
                     "id": 0,
                     "name": "First chart",
+                    "colspan": 8,
                     "series": [
                         {
                             "name": "First series",

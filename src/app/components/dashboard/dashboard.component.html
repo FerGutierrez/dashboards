@@ -7,7 +7,7 @@
 <button class="btn btn-primary" (click)="addChart()">Add Chart</button>
 
 <div class="row dashboard">
-  <div *ngFor="let chart of dashboard.charts" class="col-md-4">
+  <div *ngFor="let chart of dashboard.charts" [class]="'col-md-' + chart.colspan">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">{{ chart.name }}</h3>
