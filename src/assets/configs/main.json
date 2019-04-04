@@ -7,7 +7,8 @@
         "pie",
         "scatter"
     ],
-    "defaultChart": {    
+    "defaultChart": {
+        "title": false,
         "credits": {
             "enabled": false
         }

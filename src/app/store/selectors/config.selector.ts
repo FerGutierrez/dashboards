@@ -23,3 +23,8 @@ export const selectChartTypes = createSelector(
     configState,
     (state: IConfigState) => state.config.availableChartTypes
 );
+
+export const selectDefaultChart = createSelector(
+    configState,
+    (state: IConfigState) => state.config.defaultChart
+);

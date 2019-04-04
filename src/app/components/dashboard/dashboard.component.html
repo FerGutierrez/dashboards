@@ -1,23 +1,19 @@
 <h2>{{ dashboard.name }}</h2>
 
 <button class="btn btn-default" (click)="goToDashboardList()">
-  <span class="glyphicon glyphicon-backward"></span>
+  <span class="glyphicon glyphicon-arrow-left"></span>
   Dashboards
 </button>
 <button class="btn btn-primary" (click)="addChart()">Add Chart</button>
 
-<p *ngIf="dashboard">
-  {{ dashboard | json }}
-</p>
-
-<div class="row">
+<div class="row dashboard">
   <div *ngFor="let chart of dashboard.charts" class="col-md-4">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">{{ chart.name }}</h3>
       </div>
       <div class="panel-body">
-        <div [chart]="chart | highchart"></div>
+        <div [chart]="chart | highchart | async" class="chart"></div>
       </div>
     </div>
   </div>

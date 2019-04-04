@@ -1,24 +1,25 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { Chart } from 'angular-highcharts';
 import { IChart } from '../models/chart.interface';
+import { selectDefaultChart } from '../store/selectors/config.selector';
+import { IAppState } from '../store/state/app.state';
 
 @Pipe({
   name: 'highchart'
 })
 export class HighchartPipe implements PipeTransform {
+  defaultChart$ = this.store.select(selectDefaultChart);
 
-  transform(chart: IChart): Chart {
-    chart.options = chart.options || {};
+  constructor(private store: Store<IAppState>) {}
 
-    return new Chart((<any>{    
-      chart: {
-        type: chart.options.type
-      },
-      credits: {
-        enabled: false
-      },
-      series: chart.series
-    }));
+  transform(chart: IChart): Observable<Chart> {
+    return this.store.select(selectDefaultChart)
+      .map((defaultChart: any) => {
+        const options = Object.assign({}, defaultChart, chart.options, {series: chart.series});   
+        return new Chart((<any>options));
+      });
   }
 
 }

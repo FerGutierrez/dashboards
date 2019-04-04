@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { FormArray } from '@angular/forms';
-import { Observable } from 'rxjs/observable';
 
 import { IAppState } from '../../store/state/app.state';
 import { selectChartTypes } from '../../store/selectors/config.selector';
