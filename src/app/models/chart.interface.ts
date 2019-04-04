@@ -4,5 +4,5 @@ export interface IChart {
     id?: number;
     name: string;
     series: ISeries[];
-    options: any;
+    options?: any;
 }

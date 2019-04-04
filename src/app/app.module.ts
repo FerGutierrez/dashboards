@@ -17,6 +17,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NewChartComponent } from './components/new-chart/new-chart.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ErrorComponent } from './components/error/error.component';
+import { HighchartPipe } from './pipes/highchart.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ErrorComponent } from './components/error/error.component';
     DashboardComponent,
     NewChartComponent,
     NotFoundComponent,
-    ErrorComponent
+    ErrorComponent,
+    HighchartPipe
   ],
   imports: [
     BrowserModule,
