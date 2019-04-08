@@ -1,19 +1,21 @@
-<h2>{{ dashboard.name }}</h2>
+<div  *ngIf="dashboard">
+  <h2>{{ dashboard.name }}</h2>
 
-<button class="btn btn-default" (click)="goToDashboardList()">
-  <span class="glyphicon glyphicon-arrow-left"></span>
-  Dashboards
-</button>
-<button class="btn btn-primary" (click)="addChart()">Add Chart</button>
+  <button class="btn btn-default" (click)="goToDashboardList()">
+    <span class="glyphicon glyphicon-arrow-left"></span>
+    Dashboards
+  </button>
+  <button class="btn btn-primary" (click)="addChart()">Add Chart</button>
 
-<div class="row dashboard">
-  <div *ngFor="let chart of dashboard.charts" [class]="'col-md-' + chart.colspan">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">{{ chart.name }}</h3>
-      </div>
-      <div class="panel-body">
-        <div [chart]="chart | highchart | async" class="chart"></div>
+  <div class="row dashboard">
+    <div *ngFor="let chart of dashboard.charts" [class]="'col-md-' + chart.colspan">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{ chart.name }}</h3>
+        </div>
+        <div class="panel-body">
+          <div [chart]="chart | highchart | async" class="chart"></div>
+        </div>
       </div>
     </div>
   </div>

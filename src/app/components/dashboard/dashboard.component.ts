@@ -28,6 +28,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.selectDashboardListSubscription = this.store.select(selectDashboardList)
       .subscribe((dashboards) => {
         this.dashboard = dashboards.find((item) => item.id === dashboardId);
+        if (!this.dashboard) {
+          this.router.navigate(['not-found']);
+        }
       });
   }
 
