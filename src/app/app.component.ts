@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 
 import { IAppState } from './store/state/app.state';
 import { selectConfig, selectConfigLoading, selectConfigError } from './store/selectors/config.selector';
@@ -12,8 +13,10 @@ import { GetDashboards } from './store/actions/dashboard.actions';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   loading$ = this.store.select(selectConfigLoading);
+  selectConfigSubscription: Subscription;
+  selectConfigErrorSubscription: Subscription;
 
   constructor(
     private store: Store<IAppState>,
@@ -23,17 +26,22 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(new GetConfig());
 
-    this.store.select(selectConfig)
+    this.selectConfigSubscription = this.store.select(selectConfig)
       .subscribe((config) => {
         const payload = config && config.dashboards ? config.dashboards : [];
         this.store.dispatch(new GetDashboards(payload));
       });
 
-    this.store.select(selectConfigError)
+    this.selectConfigErrorSubscription = this.store.select(selectConfigError)
       .subscribe((error) => {
         if (error) {
           this.router.navigate(['error']);
         }
       });
+  }
+  
+  ngOnDestroy() {
+    this.selectConfigSubscription.unsubscribe();
+    this.selectConfigErrorSubscription.unsubscribe();
   }
 }

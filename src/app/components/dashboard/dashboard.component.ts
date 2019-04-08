@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Chart } from 'angular-highcharts';
+import { Subscription } from 'rxjs';
 
 import { selectDashboardList } from '../../store/selectors/dashboard.selectors';
 import { IAppState } from '../../store/state/app.state';
@@ -12,8 +13,9 @@ import { IDashboard } from '../../models/dashboard.interface';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   dashboard: IDashboard;
+  selectDashboardListSubscription: Subscription;
 
   constructor(
     private store: Store<IAppState>,
@@ -23,10 +25,14 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     const dashboardId = Number(this.route.snapshot.paramMap.get('dashboardId'));
-    this.store.select(selectDashboardList)
+    this.selectDashboardListSubscription = this.store.select(selectDashboardList)
       .subscribe((dashboards) => {
         this.dashboard = dashboards.find((item) => item.id === dashboardId);
       });
+  }
+
+  ngOnDestroy() {
+    this.selectDashboardListSubscription.unsubscribe();
   }
 
   addChart() {
