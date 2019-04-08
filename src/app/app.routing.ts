@@ -14,7 +14,6 @@ const routes: Routes = [
     },
     {
         path: 'dashboards/:dashboardId',
-        // canActivate: [ DashboardExistsGuard ],
         component: DashboardComponent
     },
     {

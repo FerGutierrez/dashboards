@@ -14,12 +14,3 @@ export const selectCreatingDashboard = createSelector(
     selectDashboards,
     (state: IDashboardState) => state.creatingDashboard
 );
-
-/*
-export const selectDashboard = createSelector(
-    selectDashboards,
-    (state: IDashboardState, id: number) => {
-        return state.dashboards.find((dashboard) => dashboard.id === id);
-    }
-);
-*/

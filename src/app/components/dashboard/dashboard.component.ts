@@ -14,22 +14,6 @@ import { IDashboard } from '../../models/dashboard.interface';
 })
 export class DashboardComponent implements OnInit {
   dashboard: IDashboard;
-  
-  chart = new Chart((<any>{
-    chart: {
-      type: 'line'
-    },
-    title: {
-      text: 'Linechart'
-    },
-    credits: {
-      enabled: false
-    },
-    series: [{
-      name: 'Line 1',
-      data: [1, 2, 3]
-    }]
-  }));
 
   constructor(
     private store: Store<IAppState>,

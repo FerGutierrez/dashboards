@@ -18,6 +18,7 @@ import { NewChartComponent } from './components/new-chart/new-chart.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ErrorComponent } from './components/error/error.component';
 import { HighchartPipe } from './pipes/highchart.pipe';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { HighchartPipe } from './pipes/highchart.pipe';
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,

@@ -10,7 +10,6 @@ import { IAppState } from '../store/state/app.state';
   name: 'highchart'
 })
 export class HighchartPipe implements PipeTransform {
-  defaultChart$ = this.store.select(selectDefaultChart);
 
   constructor(private store: Store<IAppState>) {}
 
